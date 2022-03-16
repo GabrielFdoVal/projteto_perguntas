@@ -2,10 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 main() {
-  runApp(new PerguntaApp());
+  runApp(PerguntaApp());
 }
 
+@override
 class PerguntaApp extends StatelessWidget {
+  void answer() {
+    print("Answered");
+  }
+
   Widget build(BuildContext context) {
     final questions = [
       "What is your favorite color?",
@@ -20,17 +25,17 @@ class PerguntaApp extends StatelessWidget {
         body: Column(
           children: <Widget>[
             Text(questions[0]),
-            RaisedButton(
-              child: Text("Resposta 1"),
-              onPressed: null,
+            ElevatedButton(
+              child: Text("Answer 1"),
+              onPressed: answer,
             ),
-            RaisedButton(
-              child: Text("Resposta 2"),
-              onPressed: null,
+            ElevatedButton(
+              child: Text("Answer 2"),
+              onPressed: answer,
             ),
-            RaisedButton(
-              child: Text("Resposta 3"),
-              onPressed: null,
+            ElevatedButton(
+              child: Text("Answer 3"),
+              onPressed: answer,
             ),
           ],
         ),
