@@ -5,26 +5,31 @@ main() {
   runApp(PerguntaApp());
 }
 
-@override
-class PerguntaApp extends StatelessWidget {
+class PerguntaAppState extends State<PerguntaApp> {
+  int selected_answer = 0;
+
   void answer() {
+    setState(() {
+      selected_answer++;
+    });
     print("Answered");
   }
 
+  @override
   Widget build(BuildContext context) {
-    final questions = [
+    final List<String> questions = [
       "What is your favorite color?",
-      "What is your favorite animal?"
+      "What is your favorite animal?",
     ];
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Questions'),
+          title: Text("Quizz"),
         ),
         body: Column(
           children: <Widget>[
-            Text(questions[0]),
+            Text(questions[selected_answer]),
             ElevatedButton(
               child: Text("Answer 1"),
               onPressed: answer,
@@ -41,5 +46,12 @@ class PerguntaApp extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class PerguntaApp extends StatefulWidget {
+  @override
+  PerguntaAppState createState() {
+    return PerguntaAppState();
   }
 }
