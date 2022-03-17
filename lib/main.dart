@@ -5,12 +5,12 @@ main() {
   runApp(PerguntaApp());
 }
 
-class PerguntaAppState extends State<PerguntaApp> {
-  int selected_answer = 0;
+class _PerguntaAppState extends State<PerguntaApp> {
+  int _selected_answer = 0;
 
-  void answer() {
+  void _answer() {
     setState(() {
-      selected_answer++;
+      _selected_answer++;
     });
     print("Answered");
   }
@@ -29,18 +29,18 @@ class PerguntaAppState extends State<PerguntaApp> {
         ),
         body: Column(
           children: <Widget>[
-            Text(questions[selected_answer]),
+            Text(questions[_selected_answer]),
             ElevatedButton(
               child: Text("Answer 1"),
-              onPressed: answer,
+              onPressed: _answer,
             ),
             ElevatedButton(
               child: Text("Answer 2"),
-              onPressed: answer,
+              onPressed: _answer,
             ),
             ElevatedButton(
               child: Text("Answer 3"),
-              onPressed: answer,
+              onPressed: _answer,
             ),
           ],
         ),
@@ -51,7 +51,7 @@ class PerguntaAppState extends State<PerguntaApp> {
 
 class PerguntaApp extends StatefulWidget {
   @override
-  PerguntaAppState createState() {
-    return PerguntaAppState();
+  _PerguntaAppState createState() {
+    return _PerguntaAppState();
   }
 }
