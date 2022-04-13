@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_perguntas/awnser.dart';
+import './question.dart';
+import './awnser.dart';
 
 main() {
   runApp(PerguntaApp());
@@ -29,19 +31,10 @@ class _PerguntaAppState extends State<PerguntaApp> {
         ),
         body: Column(
           children: <Widget>[
-            Text(questions[_selected_answer]),
-            ElevatedButton(
-              child: Text("Answer 1"),
-              onPressed: _answer,
-            ),
-            ElevatedButton(
-              child: Text("Answer 2"),
-              onPressed: _answer,
-            ),
-            ElevatedButton(
-              child: Text("Answer 3"),
-              onPressed: _answer,
-            ),
+            Question(questions[_selected_answer]),
+            Awnser("Resposta 1", _answer),
+            Awnser("Resposta 2", _answer),
+            Awnser("Resposta 3", _answer),
           ],
         ),
       ),
