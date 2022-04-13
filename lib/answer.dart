@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Awnser extends StatelessWidget {
+class Answer extends StatelessWidget {
   final String text;
-  final void Function() _awnser;
+  final void Function() _answer;
 
-  Awnser(this.text, this._awnser);
+  Answer(this.text, this._answer);
 
   Widget build(BuildContext build) {
     return Container(
@@ -15,7 +15,7 @@ class Awnser extends StatelessWidget {
           onPrimary: Colors.white,
         ),
         child: Text(text),
-        onPressed: _awnser,
+        onPressed: _answer,
       ),
     );
   }
