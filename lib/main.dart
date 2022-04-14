@@ -20,6 +20,13 @@ class _PerguntaAppState extends State<PerguntaApp> {
     }
   }
 
+  void _reiniciarQuestionario() {
+    setState(() {
+      _selected_answer = 0;
+      _pontuacaoTotal = 0;
+    });
+  }
+
   final List<Map<String, Object>> _questions = [
     {
       'question': "What is your favorite color?",
@@ -68,7 +75,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                 responder: _answer,
               )
             // ignore: prefer_const_constructors
-            : Result("Parabéns"),
+            : Result(_pontuacaoTotal, _reiniciarQuestionario),
       ),
     );
   }
