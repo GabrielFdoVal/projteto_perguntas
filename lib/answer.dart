@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
   final String text;
-  final void Function() _answer;
+  final void Function() answer;
 
-  Answer(this.text, this._answer);
+  Answer(this.text, this.answer);
 
   Widget build(BuildContext build) {
     return Container(
@@ -15,7 +15,7 @@ class Answer extends StatelessWidget {
           onPrimary: Colors.white,
         ),
         child: Text(text),
-        onPressed: _answer,
+        onPressed: answer,
       ),
     );
   }

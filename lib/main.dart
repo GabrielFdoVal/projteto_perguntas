@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_perguntas/answer.dart';
-import './question.dart';
-import './answer.dart';
+import './questionario.dart';
 import './resultado.dart';
 
 main() {
@@ -11,11 +9,13 @@ main() {
 class _PerguntaAppState extends State<PerguntaApp> {
   // ignore: non_constant_identifier_names
   int _selected_answer = 0;
+  int _pontuacaoTotal = 0;
 
-  void _answer() {
+  void _answer(int pontuacao) {
     if (temPerguntaSelecionada) {
       setState(() {
         _selected_answer++;
+        _pontuacaoTotal += pontuacao;
       });
     }
   }
@@ -23,15 +23,30 @@ class _PerguntaAppState extends State<PerguntaApp> {
   final List<Map<String, Object>> _questions = [
     {
       'question': "What is your favorite color?",
-      'resposta': ["Black", "Red", "Blue", "Yellow"],
+      'resposta': [
+        {"texto": "Black", "ponto": 10},
+        {"texto": "Red", "ponto": 8},
+        {"texto": "Blue", "ponto": 6},
+        {"texto": "Green", "ponto": 4},
+      ],
     },
     {
       'question': "What is your favorite animal?",
-      'resposta': ["Lion", "Elephant", "Parrot", "Snake"]
+      'resposta': [
+        {"texto": "Lion", "ponto": 10},
+        {"texto": "Elephant", "ponto": 8},
+        {"texto": "Parrot", "ponto": 6},
+        {"texto": "Snake", "ponto": 4},
+      ]
     },
     {
       'question': "What is your favorite food?",
-      'resposta': ["Hamburguer", "Barbecue", "Pasta", "Japanese food"]
+      'resposta': [
+        {"texto": "Hamburguer", "ponto": 10},
+        {"texto": "Barbecue", "ponto": 8},
+        {"texto": "Pasta", "ponto": 6},
+        {"texto": "Japanese food", "ponto": 4},
+      ]
     }
   ];
 
@@ -41,22 +56,16 @@ class _PerguntaAppState extends State<PerguntaApp> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> respostas = temPerguntaSelecionada
-        ? _questions[_selected_answer].cast()['resposta']
-        : [];
-    List<Widget> widget = respostas.map((t) => Answer(t, _answer)).toList();
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text("Quizz"),
         ),
         body: temPerguntaSelecionada
-            ? Column(
-                children: <Widget>[
-                  Question(_questions[_selected_answer]['question'].toString()),
-                  ...widget,
-                ],
+            ? Questionario(
+                perguntas: _questions,
+                perguntaSelecionada: _selected_answer,
+                responder: _answer,
               )
             // ignore: prefer_const_constructors
             : Result("Parabéns"),
